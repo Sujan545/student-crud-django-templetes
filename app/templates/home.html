@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h1 style="font-size: 24px; color: #333; margin-bottom: 20px;">Student Details</h1>
+<div style="font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 0; padding: 20px; display: flex; flex-direction: row; align-items: center;flex-wrap:wrap; justify-content: center;">
+    
+
+    {% for std in student %}
+    <div style="display: flex; flex-wrap:wrap;justify-content:center; gap: 20px;">
+        <!-- Example card, repeat for each student -->
+       
+        <div style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px; width: 250px; text-align: center;">
+            {% if std.image %}
+                 <img src="{{ std.image.url }}" alt="Student Image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;">
+            {% endif %}
+            <p style="font-size: 14px; color: #666; margin: 5px 0;">{{std.id}}</p>
+            <h3 style="font-size: 20px; color: #444; margin: 0;">{{std.name}}</h3>
+            <p style="font-size: 14px; color: #666; margin: 5px 0;">{{std.age}}</p>
+            <p style="font-size: 14px; color: #666; margin: 5px 0;">{{std.address}}</p>
+            <p style="font-size: 14px; color: #666; margin: 5px 0;">{{std.faculty}}</p>
+          
+        </div>
+        <!-- Repeat above block for each student -->
+       
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

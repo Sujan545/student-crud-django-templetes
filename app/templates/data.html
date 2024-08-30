@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+
+
+
+    {% block content%}
+    <div class="table-container" style="width: 80%; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <a href="/create/">
+                <button class="edit-btn" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                    Add Student
+                </button>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="/logout/">
+                <button class="edit-btn" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                    Logout
+                </button>
+            </a>
+            {% else %}
+            <a href="/login/">
+                <button class="edit-btn" style="background-color: #1E88E5; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                    Login
+                </button>
+            </a>
+            {% endif %}
+        </div>
+    
+        <table style="width: 100%; border-collapse: collapse; font-size: 18px; text-align: left;">
+            <thead>
+                <tr style="background-color: #4CAF50; color: white;">
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Id</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Name</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Age</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Address</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Faculty</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for std in students %}
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <td style="padding: 12px 15px;">{{ std.id }}</td>
+                    <td style="padding: 12px 15px;">{{ std.name }}</td>
+                    <td style="padding: 12px 15px;">{{ std.age }}</td>
+                    <td style="padding: 12px 15px;">{{ std.address }}</td>
+                    <td style="padding: 12px 15px;">{{ std.faculty }}</td>
+
+                    {% if std.image %}
+                    <td style="padding: 12px 15px;"> <img src="{{ std.image.url }}" alt="Student Image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 15px;"></td>
+                    {% endif %}
+                    <td style="padding: 12px 15px;">
+                        <a href="/edit/{{std.id}}">
+                            <button class="edit-btn" style="background-color: #FFC107; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer;">
+                                Edit
+                            </button>
+                        </a>
+                        <a href="/delete/{{std.id}}">
+                            <button class="delete-btn" style="background-color: #f44336; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer;">
+                                Delete
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% endblock %}
+
+
+
