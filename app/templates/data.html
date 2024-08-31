@@ -1,9 +1,17 @@
 
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+</head>
 
+<body>
+    
 
-    {% block content%}
+   
     <div class="table-container" style="width: 80%; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
         <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
             <a href="/create/">
@@ -34,6 +42,7 @@
                     <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Age</th>
                     <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Address</th>
                     <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Faculty</th>
+                    <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Image</th>
                     <th style="padding: 12px 15px; border-bottom: 2px solid #f2f2f2;">Actions</th>
                 </tr>
             </thead>
@@ -66,8 +75,8 @@
             </tbody>
         </table>
     </div>
-    
-    {% endblock %}
+   </body> 
+
 
 
 
