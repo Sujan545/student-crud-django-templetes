@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Website{% endblock %}</title>
-    
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -21,21 +21,36 @@
             color: white;
             padding: 10px 0;
             text-align: center;
-            font-size: 24px;
+            font-size: 10px;
         }
 
         nav {
             background-color: #333;
             color: white;
             padding: 10px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left a, .nav-right a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-size: 18px;
+        }
+
+        .nav-right img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0;
         }
 
         nav a:hover {
@@ -63,11 +78,18 @@
     </header>
 
     <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'create' %}">Create</a>
-        
-        
-        <a href="{% url 'login' %}">Login</a>
+        <div class="nav-left">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'create' %}">Create</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact Us</a>
+        </div>
+        <div class="nav-right">
+            <a href="{% url 'read' %}">
+                <img src="{{ std.image.url }}" alt="">
+           List
+            </a>
+        </div>
     </nav>
 
     <div class="content">
