@@ -62,7 +62,7 @@ def loginn(req):
         user=authenticate(req,username=username,password=password)
         if user is not None:
             login(req,user)
-            return redirect('/read/')
+            return redirect('/home/')
     return render (req,'login.html')# type: ignore
 
 
@@ -79,4 +79,11 @@ def registerr(req):
         return redirect('/login/')
 
     return render (req,'register.html')
+
+def about(req):
+    return render(req,'about.html')
+
+def contact(req):
+    return render(req,'contact.html')
+
 
